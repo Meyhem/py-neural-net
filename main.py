@@ -39,6 +39,7 @@ def backward_pass(net: [Layer], y: np.ndarray, activations: [np.ndarray]) -> [np
     for i in reversed(range(len(net))):
         layer = net[i]
 
+        # for last layer take difference (TARGET-ACTUAL)
         if layer == net[-1]:
             errors.append(y - activations[-1])
             delta = errors[-1] * dx_relu(activations[-1])
